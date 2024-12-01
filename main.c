@@ -7,6 +7,49 @@
 extern void accelerations(int n_cars, double *input_matrix, int *output_result);
 
 int main() {
+    // Hardcoded sample case 
+    int test_cars = 3; 
+    double *test_matrix = (double*)malloc(test_cars * 3 * sizeof(double)); 
+    int *test_result = (int*)malloc(test_cars * sizeof(int)); 
+    int x;
+
+    if (!test_matrix || !test_result) {
+        printf("Memory allocation failed for test case.\n"); 
+        return 1;
+    } 
+
+    // Initialize hardcoded sample matrix 
+    test_matrix[0] = 0.0;    test_matrix[1] = 62.5;   test_matrix[2] = 10.1;
+    test_matrix[3] = 60.0;   test_matrix[4] = 122.3;  test_matrix[5] = 5.5;
+    test_matrix[6] = 30.0;   test_matrix[7] = 160.7;  test_matrix[8] = 7.8; 
+
+    printf("Testing with hardcoded sample matrix:\n"); 
+    printf("Input Matrix:\n"); 
+    for (x = 0; x < test_cars; x++) {
+        printf("%f, %f, %f\n", test_matrix[x *3], test_matrix[x * 3 + 1], test_matrix[x * 3 + 2]); 
+    }
+
+    LARGE_INTEGER test_frequency, test_start, test_end; 
+    QueryPerformanceFrequency(&test_frequency); 
+    QueryPerformanceCounter(&test_start); 
+
+    accelerations(test_cars, test_matrix, test_result); 
+
+    QueryPerformanceCounter(&test_end);
+
+    printf("Returned from accelerations\n"); 
+    printf("Results:\n"); 
+    for (x = 0; x < test_cars; x++) {
+        printf("%d\n", test_result[x]);
+    }
+
+    double test_execution_time = (double)(test_end.QuadPart - test_start.QuadPart) / test_frequency.QuadPart;
+    printf("Execution time of test: %.6f seconds\n\n", test_execution_time);
+
+    free(test_matrix);
+    free(test_result);
+
+    // Large input test
     int n_cars = 10000; // Experiment with 10, 100, 1000, etc. 
     int runs = 30; 
     int i, j; 
