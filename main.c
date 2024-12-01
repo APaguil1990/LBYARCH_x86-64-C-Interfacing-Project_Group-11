@@ -1,3 +1,5 @@
+
+
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <windows.h> 
@@ -48,7 +50,7 @@ int main() {
 
     // Free allocated memory 
     free(input_matrix); 
-    free(output_result);
+    free(output_result); 
 
     return 0;
 }
