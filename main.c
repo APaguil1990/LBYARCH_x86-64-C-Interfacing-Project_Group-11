@@ -1,4 +1,6 @@
-
+// Paguiligan, James Archer B.
+// Bibon, Kyle Adrian L. 
+// S15 - LBYARCH (Group 11)
 
 #include <stdio.h> 
 #include <stdlib.h> 
