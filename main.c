@@ -67,9 +67,13 @@ int main() {
         int *output_result = (int*)malloc(n_cars * sizeof(int)); 
 
         if (!input_matrix || !output_result) {
-            printf("Memory allocation failed for input size 10^%d.", n_cars);
+            printf("Memory allocation failed for input size 10^%d = %d cars. Value too large.", n, n_cars); 
+            free(input_matrix); 
+            free(output_result);
             break; 
         }
+
+        printf("Input size (n_cars): %d\n", n_cars);
 
         // Initialize input_matrix 
         for (i = 0; i < n_cars; i++) {
@@ -78,7 +82,6 @@ int main() {
             input_matrix[i * 3 + 2] = 7.8;      // Time (T in seconds) 
         }
         double time = 0.0; 
-        printf("Input size (n_cars): %d\n", n_cars);
 
         LARGE_INTEGER frequency, start, end; 
         QueryPerformanceFrequency(&frequency); 
