@@ -73,8 +73,6 @@ int main() {
             break; 
         }
 
-        printf("Input size (n_cars): %d\n", n_cars);
-
         // Initialize input_matrix 
         for (i = 0; i < n_cars; i++) {
             input_matrix[i * 3] = 30.0;         // Initial Velocity (Vi in KM/H)
@@ -82,6 +80,7 @@ int main() {
             input_matrix[i * 3 + 2] = 7.8;      // Time (T in seconds) 
         }
         double time = 0.0; 
+        printf("Input size (n_cars): %d\n", n_cars);
 
         LARGE_INTEGER frequency, start, end; 
         QueryPerformanceFrequency(&frequency); 
@@ -93,10 +92,6 @@ int main() {
             QueryPerformanceCounter(&end); 
 
             double run_time = (double)(end.QuadPart - start.QuadPart) / frequency.QuadPart; 
-            time += run_time; 
-
-            // Output time for each run 
-            printf("Run %d time: %.5f seconds\n", j + 1, run_time); 
 
             if (run_time > 20.0) {
                 printf("ERROR: Input size %d exceeded threshold with runtime %.5f seconds. Exiting loop.\n", n_cars, run_time); 
@@ -104,6 +99,9 @@ int main() {
                 free(output_result); 
                 return 1;
             }
+            // Output time for each run 
+            printf("Run %d time: %.5f seconds\n", j + 1, run_time); 
+            time += run_time; 
         }
         double average = time / runs; 
 
