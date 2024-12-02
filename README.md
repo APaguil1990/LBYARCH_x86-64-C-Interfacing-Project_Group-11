@@ -55,6 +55,10 @@ Output:
 
 ![image](https://github.com/user-attachments/assets/1645ef5b-b87d-4a94-bb38-3697d276d937)
 
+## Correctness Checking by Manual Computation
+![MP2_ManualComp](https://github.com/user-attachments/assets/388702a0-d5e9-439c-b66f-4fdb2afdc662)
+
+
 
 ## Screenshots of the Program Output
 ![image](https://github.com/user-attachments/assets/cc63c8ad-0dce-4b52-89f4-7a6668019c29)
